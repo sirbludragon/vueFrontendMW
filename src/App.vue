@@ -1,11 +1,11 @@
-<template>
+<template> 
   <v-app>
     <v-app-bar
       app
       color="primary"
-      dark
     >
       <div class="d-flex align-center">
+        <v-app-bar-nav-icon></v-app-bar-nav-icon>
         <v-img
           alt="Vuetify Logo"
           class="shrink mr-2"
@@ -20,26 +20,22 @@
           class="shrink mt-1 hidden-sm-and-down"
           contain
           min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
+          :src="this.$vuetify.theme.dark ? 'https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png' : 'https://cdn.vuetifyjs.com/images/logos/vuetify-name-light.png'"
           width="100"
         />
       </div>
 
       <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+      <v-icon>{{ this.$vuetify.theme.dark ? 'DARK' : 'LIGHT' }}</v-icon>
+      <DarkTheme />
     </v-app-bar>
 
     <v-main>
       <v-container>
         <ClientData/>
+      </v-container>
+      <v-container>
+        
       </v-container>
     </v-main>
   </v-app>
@@ -47,16 +43,18 @@
 
 <script>
 import ClientData from './components/ClientData';
+import DarkTheme from './components/DarkTheme';
+
+
 
 export default {
   name: 'App',
-
   components: {
     ClientData,
+    DarkTheme
   },
-
   data: () => ({
-    //
+    img_src:  ['https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png', 'https://cdn.vuetifyjs.com/images/logos/vuetify-name-light.png']
   }),
 };
 </script>
