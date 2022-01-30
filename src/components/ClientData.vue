@@ -1,8 +1,9 @@
 <template>
-  <v-card elevation="2">
+  <v-card flat>
      <v-toolbar
       :color="isDarkTheme ? 'blue darken-3': 'grey darken-4'"
       dark
+      flat
     >
       <v-toolbar-title>
         Dane klienta
@@ -14,23 +15,15 @@
       <span><b>Nazwisko: </b>{{ client.surname }}</span></v-card-text
     >
     <v-btn absolute right top @click="openDetails">Szczegóły</v-btn>
-
     <ClientDataDetails v-model="dialog" v-if="dialogInitialized" />
-    <v-card-actions>
-      <v-btn elevation=6 outlined @click="changeTheme">Dane klienta</v-btn>
-      <v-btn elevation=6 outlined @click="changeTheme">Usługi</v-btn>
-      <v-btn elevation=6 outlined @click="changeTheme">Rozliczenia</v-btn>
-    </v-card-actions> 
   </v-card>
 </template>
 <script>
-//import ClientDataDetails from './ClientDataDetails.vue'
 import {isDarkTheme} from '../mixins/isDarkTheme';
 export default {
   mixins: [isDarkTheme],
   components: {
     "ClientDataDetails": () => import('./ClientDataDetails'),
-    //"ClientDataPurchase": () => import('./ClientDataPurchase')
   },
   data: () => ({
     client: {
@@ -49,9 +42,8 @@ export default {
     openDetails() {
       this.dialogInitialized = true;
       this.dialog = true
-      
     }
-  }
+  },
 };
 </script>
 
