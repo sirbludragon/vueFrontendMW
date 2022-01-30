@@ -7,24 +7,24 @@
             
         >
             <v-tabs centered grow>
-            <v-tab href="#search">
+            <v-tab href="#ClientDataU">
                 Usługi
             </v-tab>
-            <v-tab-item value="search">
+            <v-tab-item value="ClientDataU">
                 <ClientDataU/>
             </v-tab-item>
 
-            <v-tab href="#rare">
+            <v-tab href="#ClientDataP">
                 Pracownicy
             </v-tab>
-            <v-tab-item value="rare">
+            <v-tab-item value="ClientDataP">
                 <ClientDataP />
             </v-tab-item>
 
-            <v-tab href="#review">
+            <v-tab href="#ClientDataD">
                 Dostawy
             </v-tab>
-            <v-tab-item value="review">
+            <v-tab-item value="ClientDataD">
                 <ClientDataD/>
             </v-tab-item>
             </v-tabs>
