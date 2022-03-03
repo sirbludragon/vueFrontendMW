@@ -13,6 +13,70 @@
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
+    <script>
+      window.coachViewContext = {
+        binding: {
+          value: {
+            resupplyRequest:{
+              purchaserData:{
+                fullName: 'Marcin Wieczorek',
+                mail: 'małpa@wp.pl',
+                phone: '52355234',
+                id: '2354',
+               },
+               shopData:{
+                name: 'sklep papa',
+                voivodeship: 'mazowieckie',
+                district: 'otwocki',
+                city: 'wiazowna',
+                street: 'prosta 6',
+                shopId:'412',
+               },
+               warehouse:{
+                name: 'magazyn papa',
+                voivodeship: 'wielkopolskie',
+                district: 'poznanski',
+                city: 'buk',
+                street: 'krzywa 7b',
+                warehouseId:'112',
+               },
+               isUserPurchaser:'yes',
+               isPriority:true,
+               itemList: {
+                items:[
+                {
+                  name: 'Ibum',
+                  quantity: 15,
+                  unitPrice: 6.99,
+                  totalPrice: 24,
+                  warehouseId: 120,
+                },
+                {
+                  name: 'Apap',
+                  quantity: 5,
+                  unitPrice: 12.99,
+                  totalPrice: 64,
+                  warehouseId: 120,
+                }],
+               },
+            },
+          businessStatus: 'do akceptacji',
+        },
+          get(prop) {
+            return this[prop]
+          }
+        },
+        options: {
+          notes: {
+            value: "",
+            get(prop) {
+              return this[prop]
+            }
+          }
+        }
+      }
+
+    </script>
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>

@@ -1,48 +1,39 @@
 <template>
+    <v-container>
     <v-card>
-        <v-toolbar
-            :color="isDarkTheme ? 'blue darken-3': 'grey darken-4'"
-            dark
-            rounded
-            
-        >
-            <v-tabs centered grow>
-            <v-tab href="#ClientDataU">
-                Usługi
-            </v-tab>
-            <v-tab-item value="ClientDataU">
-                <ClientDataU/>
-            </v-tab-item>
-
-            <v-tab href="#ClientDataP">
-                Pracownicy
-            </v-tab>
-            <v-tab-item value="ClientDataP">
-                <ClientDataP />
-            </v-tab-item>
-
-            <v-tab href="#ClientDataD">
-                Dostawy
-            </v-tab>
-            <v-tab-item value="ClientDataD">
-                <ClientDataD/>
-            </v-tab-item>
-            </v-tabs>
-        </v-toolbar>
+    <v-toolbar :color="isDarkTheme ? 'blue darken-3' : 'grey darken-4'" dark flat >
+      <v-tabs v-model="tab"  grow flat>
+        <v-tab v-for="item in items" :key="item.tab">
+          {{ item.tab }}
+        </v-tab>
+      </v-tabs>
+      </v-toolbar>
+      <v-tabs-items v-model="tab" >
+        <v-tab-item v-for="item in items" :key="item.tab">
+          <v-card flat>
+            <v-card-text>
+              <component v-bind:is="item.content"></component>
+            </v-card-text>
+          </v-card>
+        </v-tab-item>
+      </v-tabs-items>
     </v-card>
+  </v-container>
 </template>
 <script>
 import {isDarkTheme} from '../mixins/isDarkTheme';
 export default {
   mixins: [isDarkTheme],
   components: {
-    "ClientDataU": () => import('./ClientDataU'),
     "ClientDataP": () => import('./ClientDataP'),
     "ClientDataD": () => import('./ClientDataD'),
   },
   data: () => ({
     tab: null,
-    items: ['Pracownicy', 'Usługi', 'Podsumowanie',],
+    items: [
+        { tab: 'Dane Zamawiającego', content: 'ClientDataP' },
+        { tab: 'Zamówienie', content: 'ClientDataD' }
+    ],
 }),
 };
 </script>
